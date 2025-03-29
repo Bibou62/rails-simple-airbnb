@@ -1,0 +1,17 @@
+ <div class="container">
+  <h1 class="mt-4 mb-4"> Tous nos appartements (<%= @flats.count %>) </h1>
+    <div class='row'>
+      <% @flats.each do |flat|  %>
+        <%= link_to flat_path(flat) do %>
+            <div class="card col-3 d-flex flex-column mx-3 mb-3">
+              <h2 class='card-title'>  <%= flat.name  %>  </h2>
+              <p class='card-text'> Localisation: <%= flat.address %> </p>
+              <p class='card-text'> description: <%= flat.description %> </p>
+              <p> Price: <%= flat.price_per_night %> / night </p>
+              <p> For: <%= flat.number_of_guests %> persons </p>
+              <img src="<%= flat.image_url %>" alt="<%= flat.name %>" class="img-fluid mt-auto mb-2" />
+        <% end %>
+            </div>
+     <% end %>
+  </div>
+</div>
