@@ -51,7 +51,7 @@ puts "Creating flats with images..."
     description: Faker::Lorem.paragraph,
     price_per_night: rand(50..200),
     number_of_guests: rand(1..6),
-    image_url: Faker::LoremFlickr.image(size: "400x300", search_terms: ['apartment'])
+    image_url: "https://picsum.photos/640/480"
   )
 end
 
