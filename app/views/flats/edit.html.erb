@@ -1,0 +1,18 @@
+<div class='container'>
+
+  <h1> Make modifications </h1>
+
+  <%= simple_form_for @flat do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :price_per_night %>
+    <%= f.input :number_of_guests %>
+    <%= f.input :image_url, as: :string %>  <!-- Champ pour l'upload d'image -->
+    <%= f.button :submit, class:'btn btn-primary w-100' %>
+
+  <% end %>
+<br>
+  <%= link_to 'Return to Index', flats_path, class:' btn btn-success w-100' %>
+
+</div>

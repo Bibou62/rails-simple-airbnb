@@ -6,6 +6,10 @@
       <p> Price: <%= @flat.price_per_night %> / night </p>
       <p> For: <%= @flat.number_of_guests %> person(s) </p>
       <img src="<%= @flat.image_url %>" alt="<%= @flat.name %>" class="img-fluid mt-auto mb-2 mx-2" />
+       <div class="d-flex gap-3" >
+          <%= link_to "Edit", edit_flat_path(params[:id]), class: "btn btn-success" %>
+          <%= link_to "Remove", flat_path(params[:id]), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class: "btn btn-danger" %>
+        </div>
     </div>
 </div>
 
