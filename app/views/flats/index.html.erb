@@ -1,17 +1,42 @@
- <div class="container">
-  <h1 class="mt-4 mb-4"> Tous nos appartements (<%= @flats.count %>) </h1>
-    <div class='row'>
-      <% @flats.each do |flat|  %>
-        <%= link_to flat_path(flat) do %>
-            <div class="card col-3 d-flex flex-column mx-3 mb-3">
-              <h2 class='card-title'>  <%= flat.name  %>  </h2>
-              <p class='card-text'> Localisation: <%= flat.address %> </p>
-              <p class='card-text'> description: <%= flat.description %> </p>
-              <p> Price: <%= flat.price_per_night %> / night </p>
+<div class="container">
+  <div class='d-flex justify-content-between align-items-center'>
+    <h1 class="mt-2 mb-2"> All our flats (<%= @flats.count %>) </h1>
+    <%= link_to "Create a new flat", new_flat_path, class: "btn btn-primary mt-2 mb-2" %>
+  </div>
+
+<div class="d-flex justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: flats_path, method: :get, class: "input-group" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Rechercher un appartement"
+        %>
+      <%= submit_tag "Rechercher", name: "", class: "btn btn-search" %>
+    <% end %>
+  </div>
+</div>
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-md-4 d-flex">
+        <div class="card d-flex flex-column mx-2 mb-2 h-100">
+          <%= link_to flat_path(flat), class: "text-decoration-none w-100" do %>
+            <div class="card-body">
+              <h2 class="card-title"> <%= flat.name %> </h2>
+              <p class="card-text"> Localisation: <%= flat.address %> </p>
+              <p class="card-text"> Description: <%= flat.description %> </p>
+              <p> Price: <%= flat.price_per_night %>€ / night </p>
               <p> For: <%= flat.number_of_guests %> persons </p>
-              <img src="<%= flat.image_url %>" alt="<%= flat.name %>" class="img-fluid mt-auto mb-2" />
-        <% end %>
             </div>
-     <% end %>
+          <% end %>
+          <img src="<%= flat.image_url %>" alt="<%= flat.name %>" class="img-fluid mt-auto mb-2" />
+          <div class="card-footer text-center">
+            <%= link_to "Remove", flat_path(flat),
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

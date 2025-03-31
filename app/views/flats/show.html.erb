@@ -1,10 +1,20 @@
-<div class="container">
-    <div class="card">
-      <h2 class='card-title'>  <%= flat.name  %>  </h2>
-      <p class='card-text'> Localisation: <%= flat.address %> </p>
-      <p class='card-text'> description: <%= flat.description %> </p>
-      <p> Price: <%= flat.price_per_night %> / night </p>
-      <p> For: <%= flat.number_of_guests %> persons </p>
-      <img src="<%= flat.image_url %>" alt="<%= flat.name %>" class="img-fluid mt-auto mb-2" />
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card" style="width: 25rem;">
+      <h2 class='card-title'>  <%= @flat.name  %>  </h2>
+      <p class='card-text'> Localisation: <%= @flat.address %> </p>
+      <p class='card-text'> description: <%= @flat.description %> </p>
+      <p> Price: <%= @flat.price_per_night %> / night </p>
+      <p> For: <%= @flat.number_of_guests %> person(s) </p>
+      <img src="<%= @flat.image_url %>" alt="<%= @flat.name %>" class="img-fluid mt-auto mb-2 mx-2" />
     </div>
 </div>
+
+<%# <%= simple_form_for @flat do |f| %>
+<%# <%= f.input :opening_date, %>
+            <%# as: :string, %>
+            <%# input_html: { data: { controller: "datepicker" } } %>
+<%# <%= f.input :ending_date, %>
+            <%# as: :string, %>
+            <%# input_html: { data: { controller: "datepicker" } } %>
+<%# <%= f.button :submit, class:'btn btn-primary w-20' %>
+<%# <% end %>
